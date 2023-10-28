@@ -3,8 +3,8 @@ import { extendTheme } from "@chakra-ui/react";
 const theme = extendTheme({
 	colors: {
 		brand: {
-			secondary: "#fff",
-			primary: "#000",
+			secondary: "#99786E",
+			primary: "#FFA695",
 		},
 	},
 	styles: {
@@ -14,7 +14,7 @@ const theme = extendTheme({
 			},
 			body: {
 				fontFamily:
-					"-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
+					"Palanquin, Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
 				color: "black",
 				lineHeight: "base",
 				padding: 0,
@@ -39,6 +39,17 @@ const theme = extendTheme({
 				background: "brand.primary",
 				borderRadius: "50px",
 			},
+			h1: {
+				fontFamily: "Ubuntu, Robot, -apple-system",
+				color: "brand.primary",
+				justifyContent: "center",
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+			},
+			p: {
+				color: "#FFC1AE",
+			}
 		}),
 	},
 });

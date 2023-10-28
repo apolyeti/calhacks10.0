@@ -1,5 +1,5 @@
 const META = {
-    title: "Sextuplets",
+    title: "CalHacks 10.0",
     description: "App description",
     lang: "en",
     url: "https://example.com",
