@@ -1,28 +1,10 @@
 import { AbsoluteCenter, Text, Heading, Button,} from "@chakra-ui/react"
 import { motion } from "framer-motion"
-import AudioRecorder from "@components/AudioRecorder"
+import AudioRecorder from "@components/AudioRecord"
 import { useState } from "react"
 
 
 export default function Hero() {
-    const handleClick = async () => {
-        try {
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: 'audio' })
-            };
-            const response = await fetch("http://127.0.0.1:5000/audio", requestOptions);
-            if (response.ok) {
-                const data = await response.json();
-                console.log(data.message);
-            } else {
-                console.log("Error fetching data!");
-            }
-        } catch (error) {
-            console.error("Error fetching data!", error)
-        }
-    }
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -38,9 +20,6 @@ export default function Hero() {
                     </Text>
                 <AudioRecorder />
                 </Heading>
-                <Button onClick={handleClick}>
-                    Click Me
-                </Button>
             </AbsoluteCenter>
         </motion.div>
     )
