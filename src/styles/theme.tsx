@@ -41,7 +41,8 @@ const theme = extendTheme({
 			},
 			h1: {
 				fontFamily: "Ubuntu, Robot, -apple-system",
-				color: "brand.primary",
+				fontSize: "3rem",
+				color: "#FFC1AE",
 				justifyContent: "center",
 				display: "flex",
 				flexDirection: "column",

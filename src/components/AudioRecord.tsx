@@ -1,11 +1,17 @@
-import { HStack, Button } from '@chakra-ui/react';
+import { HStack, Button, VStack, Text, AbsoluteCenterProps, useToast } from '@chakra-ui/react';
 import { AudioRecorder } from 'react-audio-voice-recorder';
 import { useState } from 'react';
 
-export default function AudioRecord() {
+interface AudioRecordProps {
+    setIsLoading: (isLoading: boolean) => void;
+    setHasSubmitted: (hasSubmitted: boolean) => void;
+    hasSubmitted: boolean;
+}
+
+export default function AudioRecord({ setIsLoading, setHasSubmitted, hasSubmitted } : AudioRecordProps) {
     const [data, setData] = useState<any>();
+    const errorToast = useToast();
     const [hasRecorded, setHasRecorded] = useState(false);
-    
 
     const createAudio = (blob : Blob) => {
         setHasRecorded(true);
@@ -16,10 +22,11 @@ export default function AudioRecord() {
             setData(base64data);
             console.log(base64data);
         }
-      };
 
+      };
       const handleSubmit = async () => {
         try {
+            setIsLoading(true);
             const response = await fetch('http://127.0.0.1:5000/audio', {
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,20 +34,36 @@ export default function AudioRecord() {
                 method: 'POST',
                 body: JSON.stringify(data),
             });
-            console.log(response)
+            console.log(response);
+            setIsLoading(false);
+            if (response.status !== 200) {
+                setHasSubmitted(false);
+                errorToast({
+                    title: 'Error',
+                    description: "We couldn't process your audio. Please try again.",
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true,
+                  })
+            }
+            setHasSubmitted(true);
         } catch (error) {
             console.error('Error while sending audio data:', error);
         }
       }
-
-
-    return (
-        <HStack>
-            <AudioRecorder 
-                onRecordingComplete={createAudio}
-                showVisualizer={true}
-            />
-            {hasRecorded && <Button onClick={handleSubmit}>Submit</Button>}
-        </HStack>
-    )
+        return (
+            // show loading if loading, if not, show entire page as needed
+            // if loading, show loading spinner
+                <VStack>
+                    <HStack>
+                        <AudioRecorder 
+                            onRecordingComplete={createAudio}
+                            showVisualizer={true}
+                            downloadFileExtension='mp3'
+                        />
+                        {hasRecorded && <Button onClick={handleSubmit}>Submit</Button>}
+                    </HStack>
+                    {hasSubmitted && <Text>Sent!</Text>}
+                </VStack>
+        )
 }
