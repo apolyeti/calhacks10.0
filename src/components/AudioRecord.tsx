@@ -46,13 +46,21 @@ export default function AudioRecord({ setIsLoading, setHasSubmitted, setPrompt, 
                     status: 'error',
                     duration: 9000,
                     isClosable: true,
-                  })
+                  });
             }
             setHasSubmitted(true);
         } catch (error) {
+            setIsLoading(false);
             console.error('Error while sending audio data:', error);
+            errorToast({
+                title: 'Error',
+                description: "We couldn't process your audio. Please try again.",
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+              })
         }
-      }
+    }
         return (
             // show loading if loading, if not, show entire page as needed
             // if loading, show loading spinner

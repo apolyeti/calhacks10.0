@@ -49,7 +49,12 @@ const theme = extendTheme({
 				alignItems: "center",
 			},
 			p: {
-				color: "#FFC1AE",
+				color: "#FCE6E0",
+				fontFamily: "Ubuntu, Robot, -apple-system",
+				justifyContent: "center",
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
 			}
 		}),
 	},

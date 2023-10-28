@@ -40,6 +40,12 @@
       "react": [
         "../node_modules/@types/react"
       ],
+      "@views/*": [
+        "views/*"
+      ],
+      "@types": [
+        "types.ts"
+      ]
     },
     "incremental": true
   },
