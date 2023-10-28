@@ -15,7 +15,7 @@ export default function Hero() {
     const [user, setUser] = useState<string>();
     if (!user) {
         return (
-            <LoginView setData={(setUser)}/>
+            <LoginView setUser={(setUser)}/>
         )
     }
     if (isLoading) {
