@@ -5,10 +5,11 @@ import { useState } from 'react';
 interface AudioRecordProps {
     setIsLoading: (isLoading: boolean) => void;
     setHasSubmitted: (hasSubmitted: boolean) => void;
+    setPrompt: (prompt: string) => void;
     hasSubmitted: boolean;
 }
 
-export default function AudioRecord({ setIsLoading, setHasSubmitted, hasSubmitted } : AudioRecordProps) {
+export default function AudioRecord({ setIsLoading, setHasSubmitted, setPrompt, hasSubmitted } : AudioRecordProps) {
     const [data, setData] = useState<any>();
     const errorToast = useToast();
     const [hasRecorded, setHasRecorded] = useState(false);
@@ -34,7 +35,8 @@ export default function AudioRecord({ setIsLoading, setHasSubmitted, hasSubmitte
                 method: 'POST',
                 body: JSON.stringify(data),
             });
-            console.log(response);
+            const json = await response.json();
+            setPrompt(json.prompt);
             setIsLoading(false);
             if (response.status !== 200) {
                 setHasSubmitted(false);

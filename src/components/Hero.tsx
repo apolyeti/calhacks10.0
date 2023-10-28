@@ -42,7 +42,7 @@ export default function Hero() {
                             <Text as={"p"} fontSize={"2rem"} paddingBottom={"1vh"}>
                                 click the button whenever you{'\''}re ready
                             </Text>
-                            <AudioRecorder setHasSubmitted={setHasSubmitted} setIsLoading={setIsLoading} hasSubmitted={hasSubmitted}/>
+                            <AudioRecorder setHasSubmitted={setHasSubmitted} setIsLoading={setIsLoading} hasSubmitted={hasSubmitted} setPrompt={setPrompt}/>
                         </motion.div>
                     </Heading>
                 </Center>
@@ -92,7 +92,7 @@ export default function Hero() {
                     height={"100vh"}
                     >
                     <Heading as={"h1"} fontFamily={"Ubuntu"} fontSize={"3rem"}>
-                        i see?
+                        i see!
                         <motion.div
                             initial={{ opacity: 0, y:-0.5 }}
                             animate={{ opacity: 1, y:0 }}
