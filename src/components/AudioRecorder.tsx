@@ -8,7 +8,7 @@ export default function AudioRecorder() {
         try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         mediaRecorder.current = new MediaRecorder(stream);
-        mediaRecorder.current.ondataavailable = (e) => {
+        mediaRecorder.current.ondataavailable = (e : BlobEvent) => {
             const audioBlob = new Blob([e.data], { type: 'audio/wav' });
             const audioUrl = URL.createObjectURL(audioBlob);
             audioRef.current.src = audioUrl;
