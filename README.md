@@ -1,4 +1,7 @@
-# Let It Out - CalHacks 10.0
+# Let It Out - FRONTEND
+
+Project for CalHacks 10.0
+
 
 ## Inspiration
 
