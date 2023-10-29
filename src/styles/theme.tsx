@@ -40,7 +40,7 @@ const theme = extendTheme({
 				borderRadius: "50px",
 			},
 			h1: {
-				fontFamily: "Ubuntu, Robot, -apple-system",
+				fontFamily: "Ubuntu, Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
 				fontSize: "3rem",
 				color: "#FFC1AE",
 				justifyContent: "center",
@@ -50,7 +50,7 @@ const theme = extendTheme({
 			},
 			p: {
 				color: "#FCE6E0",
-				fontFamily: "Ubuntu, Robot, -apple-system",
+				fontFamily: "Ubuntu, Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
 				justifyContent: "center",
 				display: "flex",
 				flexDirection: "column",
