@@ -50,3 +50,18 @@ export const getJournal = async ({username}) => {
         console.error(err);
     }
 }
+
+export const analyzeJournals = async () => {
+    try {
+        const req = await fetch("http://127.0.0.1:5000/journal_analysis");
+        const response = await req.json();
+        if (req.ok) {
+            console.log('Analyzed all journals');
+            return response;
+        } else {
+            console.error('Failed to analyze journals', response.error);
+        }
+    } catch (err) {
+        console.error(err);
+    }
+}
