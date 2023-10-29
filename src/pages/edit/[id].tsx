@@ -1,15 +1,16 @@
-import { Button, Heading, VStack } from '@chakra-ui/react';
+import { Button, Heading, VStack, useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import { NextPage } from 'next';
 import { Editor } from "@tinymce/tinymce-react"
 import { useEffect, useRef, useState } from 'react';
-import { getJournal } from '@utils/api';
+import { getJournal, postJournal } from '@utils/api';
 import type { Journal } from '@types';
 
 export default function Edit() : NextPage {
     const [prompt, setPrompt] = useState<string>("");
     const [content, setContent] = useState<string>("");
+    const toast = useToast();
     const router = useRouter();
     const { id } = router.query;
     useEffect(() => {
@@ -50,6 +51,27 @@ export default function Edit() : NextPage {
             `,
         ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
     }
+    const handleClick = () => {
+        if (editorRef.current) {
+            console.log(editorRef.current.getContent())
+            const data = {
+                content: editorRef.current.getContent(),
+                prompt: prompt,
+                user: "Waylon",
+            }
+            console.log(data)
+            postJournal(data);
+            toast({
+                title: "Journal Saved",
+                description: "Your journal has been saved",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+            })
+            // wait a little bit until doing window
+        }
+    }
+
     return (
         <VStack>
             <NextLink href={"/journals"}>
@@ -75,9 +97,7 @@ export default function Edit() : NextPage {
                 init={initEditor}
                 initialValue={content}
             />
-            <Button onClick={() => {
-                console.log(editorRef.current.getContent());}}
-            >
+            <Button onClick={handleClick}>
                     Save
             </Button>
         </VStack>

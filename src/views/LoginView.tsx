@@ -75,6 +75,11 @@ export default function LoginView({setUser} : LoginViewProps) {
                         onChange={(e) => setUsername(e.target.value)}
                         _placeholder={{ color: "white", opacity: 0.5}}
                         focusBorderColor='white'
+                        onKeyPress={(e) => {
+                            if (e.key === "Enter") {
+                                handleSubmit();
+                            }
+                        }}
                     />
                     <Input 
                         // make the color of input text white
@@ -86,6 +91,11 @@ export default function LoginView({setUser} : LoginViewProps) {
                         onChange={(e) => setPassword(e.target.value)}
                         _placeholder={{ color: "white", opacity: 0.5 }}
                         focusBorderColor='white'
+                        onKeyPress={(e) => {
+                            if (e.key === "Enter") {
+                                handleSubmit();
+                            }
+                        }}
                     />
                 </FormControl>
             </Container>
