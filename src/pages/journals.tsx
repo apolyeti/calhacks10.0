@@ -103,12 +103,12 @@ export default function Journal() : NextPage {
             borderWidth={"1px"}
         >
             <Box>
-            <Text as={"p"} fontSize={"2rem"}>
-                {summary}
-            </Text>
+                <Text as={"p"} fontSize={"1rem"}>
+                    {summary}
+                </Text>
             </Box>
             <Box>
-                <Text as={"p"} fontSize={"2rem"}>
+                <Text as={"p"} fontSize={"1rem"}>
                     {events}
                 </Text>
             </Box>

@@ -45,7 +45,7 @@ export default function SpeakView({setHasSubmitted, setIsLoading, setPrompt, has
                 position={"relative"}
                 height={"100vh"}
             >
-                <Heading as={"h1"} fontFamily={"Ubuntu"} fontSize={"3rem"}>
+                <Heading as={"h1"} fontSize={"3rem"}>
                     let it all out
                     <motion.div
                         initial={{ opacity: 0, y:-0.5 }}
