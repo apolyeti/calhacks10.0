@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Center, Heading, Text, Button } from '@chakra-ui/react'
+import { Center, Heading, Text, Button, useToast } from '@chakra-ui/react'
 import { Editor } from "@tinymce/tinymce-react"
 import { postJournal, getUsers } from '@utils/api'
 import type { User } from '@types'
@@ -12,6 +12,7 @@ interface ReflectProps {
 
 export default function Reflect({prompt, setUser} : ReflectProps) {
     const [allUsers, setAllUsers] = useState<User[]>([]);
+    const toast = useToast();
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -43,6 +44,19 @@ export default function Reflect({prompt, setUser} : ReflectProps) {
             }
             console.log(data)
             postJournal(data);
+            toast({
+                title: "Journal Saved",
+                description: "Your journal has been saved",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+            })
+            // wait a little bit until doing window
+            setTimeout(() => {
+                window.location.href = "/"
+            }, 1000)
+
+
         }
     }
     const initEditor = {

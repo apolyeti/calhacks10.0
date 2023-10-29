@@ -22,7 +22,7 @@ export default function JournalEntry( {id, name, content }: JournalEntryProps) {
         display={"flex"}
         bgColor={"#965D4D"}
         _hover={{
-            bgColor: "#C4A7A1",
+            bgColor: "#632E1F",
             cursor: "pointer",
             transform: "scale(1.03); duration: 0.5s"
         }}

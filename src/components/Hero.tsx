@@ -1,10 +1,10 @@
-import { Center, Text, Heading, AbsoluteCenter, Input, Button, useToast, useDisclosure } from "@chakra-ui/react"
+import { Center, Text, Heading, AbsoluteCenter, Input, Button, useToast } from "@chakra-ui/react"
+import { ViewIcon } from "@chakra-ui/icons"
 import Loading from "@components/Loading"
 import { useState, useRef } from "react"
 import ReflectView from "@views/ReflectView"
 import SpeakView from "@views/SpeakView"
 import LoginView from "@views/LoginView"
-import NextLink from "next/link"
 
 
 export default function Hero() {
@@ -27,7 +27,6 @@ export default function Hero() {
     } else if (prompt === ""){
         return (
             <>
-            <NextLink href="/journals">journals</NextLink>
             <SpeakView 
                 hasSubmitted={hasSubmitted} 
                 setHasSubmitted={setHasSubmitted} 

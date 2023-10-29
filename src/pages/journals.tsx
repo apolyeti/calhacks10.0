@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import NextLink from "next/link"
 import { Center, Text, Heading, VStack, Input, Button, useToast, useDisclosure } from "@chakra-ui/react"
 import Loading from "@components/Loading"
 import { useState, useRef, useEffect } from "react"
@@ -18,13 +19,30 @@ export default function Journal() : NextPage {
         getJournals();
     }
     , []);
+    // make div space the journals from the top of the screen
     return (
         <VStack display={"flex"}>
+            <div
+                style={{
+                    height: "5vh",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+                >
+
+            </div>
         {journals.map((journal) => {
                 return (
-                    <JournalEntry key={journal.id} content={journal.content} name={journal.name}padding={"2vh"}/>
+                    <JournalEntry key={journal.id} content={journal.content} name={journal.name} padding={"4vh"}/>
                 )
             })}
+        <NextLink href={"/"}>
+            <Button>
+                Back
+            </Button>
+        </NextLink>
         </VStack>
     )
 }

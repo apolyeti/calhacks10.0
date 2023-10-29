@@ -1,7 +1,10 @@
-import {Center, Heading, Text, CreateToastFnReturn} from '@chakra-ui/react'
+import {Center, Heading, Text, CreateToastFnReturn, IconButton, useToast} from '@chakra-ui/react'
+import { ViewIcon } from '@chakra-ui/icons'
 import { motion } from 'framer-motion'
 import AudioRecorder from '@components/AudioRecord';
-import List from '@components/List';
+import NextLink from 'next/link';
+
+
 
 
 interface SpeakViewProps {
@@ -19,15 +22,29 @@ export default function SpeakView({setHasSubmitted, setIsLoading, setPrompt, has
             animate={{ opacity: 1, y:0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
         >
-            <List />
+            <NextLink href="/journals" padding={"5ox"} color={"transparent"}>
+                <IconButton
+                    position={"absolute"}
+                    top={"0"}
+                    left={"0"}
+                    aria-label={"View Journals"}
+                    _hover={{
+                        cursor: "pointer",
+                        transform: "scale(1.07); duration: 0.5s"
+                    }}
+                    size={"md"}
+                    icon={<ViewIcon />}
+                    isRound={true}
+                    display={"flex"}
+                />
+                {'.'}
+            </NextLink>
             <Center
                 justifyContent={"center"}
                 alignItems={"center"}
                 position={"relative"}
-                display={"flex"}
-                flexDirection={"column"}
                 height={"100vh"}
-                >
+            >
                 <Heading as={"h1"} fontFamily={"Ubuntu"} fontSize={"3rem"}>
                     let it all out
                     <motion.div
