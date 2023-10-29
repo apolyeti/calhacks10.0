@@ -4,12 +4,12 @@ import {
     VStack,
     FormControl,
     FormLabel,
-    FormErrorMessage,
-    FormHelperText,
+    Center,
     Input,
 } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import { getUsers } from '@utils/api'
+import { motion } from 'framer-motion'
 import {ArrowRightIcon} from '@chakra-ui/icons'
 import type { User } from '@types'
 
@@ -47,31 +47,50 @@ export default function LoginView({setUser} : LoginViewProps) {
             }
             if (isAuthenticated) {
                 localStorage.setItem('authToken', username + password);
+                window.location.href = "/"
+            } else {
+                window.location.href = "/?login=false"
             }
-            window.location.href = "/"
         }, 1000)
     };
     return (
         // make login form that takes username and password
         // make iconbutton spin around when hovered over
+        <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+        >
+        <Center
+            height={"100vh"}>
         <VStack>
             <Container>
-                <FormControl>
-                    <FormLabel>Username</FormLabel>
-                    <Input 
+                <FormControl colorScheme={"white"} color={"white"}fontSize={"3rem"}width={"30vh"}>
+                    <Input
+                        variant={"flushed"} 
+                        placeholder="Username"
+                        height={"5vh"}
                         type="username" 
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        _placeholder={{ color: "white", opacity: 0.5}}
+                        focusBorderColor='white'
                     />
-                    <FormLabel>Password</FormLabel>
                     <Input 
+                        // make the color of input text white
+                        variant={"flushed"}
+                        placeholder="Password"
+                        height={"5vh"}
                         type="password" 
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        _placeholder={{ color: "white", opacity: 0.5 }}
+                        focusBorderColor='white'
                     />
                 </FormControl>
             </Container>
             <IconButton 
+                marginTop={"2vh"}
                 isRound={true}
                 aria-label='login' 
                 icon={<ArrowRightIcon />}
@@ -81,5 +100,7 @@ export default function LoginView({setUser} : LoginViewProps) {
             />
 
         </VStack>
+        </Center>
+        </motion.div>
     )
 }
