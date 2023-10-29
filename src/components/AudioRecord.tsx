@@ -1,5 +1,4 @@
-import { HStack, Button, IconButton, VStack, Text, useToast, useDisclosure,
-    Drawer, DrawerBody, DrawerHeader, DrawerCloseButton, DrawerOverlay, DrawerContent } from '@chakra-ui/react';
+import { HStack, Button, IconButton, VStack, Text, useToast, } from '@chakra-ui/react';
 import { AudioRecorder } from 'react-audio-voice-recorder';
 import { useState, useRef } from 'react';
 
@@ -14,8 +13,6 @@ export default function AudioRecord({ setIsLoading, setHasSubmitted, setPrompt, 
     const [data, setData] = useState<any>();
     const errorToast = useToast();
     const [hasRecorded, setHasRecorded] = useState(false);
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const btnRef = useRef();
 
     const createAudio = (blob : Blob) => {
         setHasRecorded(true);
@@ -67,26 +64,6 @@ export default function AudioRecord({ setIsLoading, setHasSubmitted, setPrompt, 
             // show loading if loading, if not, show entire page as needed
             // if loading, show loading spinner
                 <VStack>
-                    <Button 
-                        position={'absolute'} 
-                        top={0} right={0} 
-                        onClick={onOpen}
-                        ref={btnRef}
-                    >
-                        Open
-                    </Button>
-                    <Drawer
-                        isOpen={isOpen}
-                        placement='right'
-                        onClose={onClose}
-                        finalFocusRef={btnRef}
-                    >
-                        <DrawerOverlay />
-                        <DrawerContent>
-                        <DrawerCloseButton />
-                        <DrawerHeader>Journals</DrawerHeader>
-                        </DrawerContent>
-                    </Drawer>
                     <HStack>
                         <AudioRecorder 
                             onRecordingComplete={createAudio}

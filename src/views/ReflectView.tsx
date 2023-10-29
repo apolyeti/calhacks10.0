@@ -1,17 +1,48 @@
 import { motion } from 'framer-motion'
 import { Center, Heading, Text, Button } from '@chakra-ui/react'
 import { Editor } from "@tinymce/tinymce-react"
-import { useRef } from 'react'
+import { postJournal, getUsers } from '@utils/api'
+import type { User } from '@types'
+import { useEffect, useRef, useState } from 'react'
 
 interface ReflectProps {
     prompt: string;
+    setUser: (user: string) => void;
 }
 
-export default function Reflect({prompt} : ReflectProps) {
+export default function Reflect({prompt, setUser} : ReflectProps) {
+    const [allUsers, setAllUsers] = useState<User[]>([]);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            let usert = localStorage.getItem("authToken");
+            setUser(usert);
+        }
+        const fetchData = async () => {
+            const dataUsers : User[] = await getUsers();
+            setAllUsers(dataUsers);
+        }
+        fetchData();
+    }, []);
     const editorRef = useRef(null);
     const handleLog = () => {
         if (editorRef.current) {
             console.log(editorRef.current.getContent())
+            let userName;
+            for (let name of allUsers) {
+                console.log(name.authkey, localStorage.authToken)
+                if (name.authkey === localStorage.authToken) {
+                    userName = name.user;
+                    break;
+                }
+            }
+            const data = {
+                content: editorRef.current.getContent(),
+                prompt: prompt,
+                user: userName,
+            }
+            console.log(data)
+            postJournal(data);
         }
     }
     const initEditor = {

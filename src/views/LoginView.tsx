@@ -40,7 +40,7 @@ export default function LoginView({setUser} : LoginViewProps) {
         setTimeout(() => {
             let isAuthenticated = false;
             for (let user of allUsers) {
-                if (username === user.username && password === user.pass) {
+                if (username === user.user && password === user.pass) {
                     isAuthenticated = true;
                     break;
                 }

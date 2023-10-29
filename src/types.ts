@@ -1,8 +1,8 @@
 export type User = {
     id: string;
-    username: string;
+    user: string;
     pass: string;
-    authKey: string;
+    authkey: string;
     journals: Array<Journal>;
 };
 

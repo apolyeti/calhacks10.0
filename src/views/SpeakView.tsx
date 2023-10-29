@@ -1,6 +1,7 @@
 import {Center, Heading, Text, CreateToastFnReturn} from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import AudioRecorder from '@components/AudioRecord';
+import List from '@components/List';
 
 
 interface SpeakViewProps {
@@ -18,6 +19,7 @@ export default function SpeakView({setHasSubmitted, setIsLoading, setPrompt, has
             animate={{ opacity: 1, y:0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
         >
+            <List />
             <Center
                 justifyContent={"center"}
                 alignItems={"center"}
