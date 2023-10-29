@@ -4,7 +4,7 @@ import { useState, useRef } from "react"
 import ReflectView from "@views/ReflectView"
 import SpeakView from "@views/SpeakView"
 import LoginView from "@views/LoginView"
-import JournalList from "./JournalList"
+import NextLink from "next/link"
 
 
 export default function Hero() {
@@ -27,7 +27,7 @@ export default function Hero() {
     } else if (prompt === ""){
         return (
             <>
-            <JournalList />
+            <NextLink href="/journals">journals</NextLink>
             <SpeakView 
                 hasSubmitted={hasSubmitted} 
                 setHasSubmitted={setHasSubmitted} 
@@ -40,7 +40,6 @@ export default function Hero() {
     } else {
         return (
             <>
-            <JournalList />
             <ReflectView 
                 prompt={prompt}
                 setUser={setUser}

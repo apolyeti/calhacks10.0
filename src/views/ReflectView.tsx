@@ -100,7 +100,7 @@ export default function Reflect({prompt, setUser} : ReflectProps) {
                             />
                             {/* <Input placeholder={"Type your prompt here"} onChange={(e) => setInput(e.target.value)}/> */}
                             <Center padding="20px">
-                                <Button onClick={handleLog}>Submit</Button>
+                                <Button onClick={handleLog}>Save</Button>
                             </Center>
                         </motion.div>
                 </Center>

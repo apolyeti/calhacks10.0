@@ -32,8 +32,8 @@ export const postJournal = async({content, prompt, user}) => {
 
 export const getJournal = async ({username}) => {
     try {
-        const req = await fetch("http://127.0.0.1:5000/get_journal", {
-            method: "GET",
+        const req = await fetch("http://127.0.0.1:5000/journal_get", {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },

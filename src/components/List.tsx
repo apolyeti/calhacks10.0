@@ -22,8 +22,6 @@ export default function List() {
 
 
         journals.map((journal) => {
-            console.log('asd')
-            console.log('asdasd')
             return (
                 <div key={journal.id}>
                     {journal.content}
