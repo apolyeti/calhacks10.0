@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import { NextPage } from 'next';
 import { Editor } from "@tinymce/tinymce-react"
 import { useEffect, useRef, useState } from 'react';
-import { getJournal, postJournal } from '@utils/api';
+import { getJournal, postJournal, updateJournal } from '@utils/api';
 import type { Journal } from '@types';
 
 export default function Edit() : NextPage {
@@ -55,12 +55,11 @@ export default function Edit() : NextPage {
         if (editorRef.current) {
             console.log(editorRef.current.getContent())
             const data = {
+                name: id,
                 content: editorRef.current.getContent(),
-                prompt: prompt,
-                user: "Waylon",
             }
             console.log(data)
-            postJournal(data);
+            updateJournal(data);
             toast({
                 title: "Journal Saved",
                 description: "Your journal has been saved",

@@ -12,6 +12,7 @@ export default function Journal() : NextPage {
     const [summary, setSummary] = useState<string>("");
     const [events, setEvents] = useState<string>("");
     const [journals, setJournals] = useState<Journal[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     useEffect(() => {
         const getJournals = async () => {
             const req = await getJournal({username: 'Waylon'});
@@ -29,6 +30,7 @@ export default function Journal() : NextPage {
     , []);
     const handleAI = async () => {
         try {
+            setIsLoading(true);
             const req = await analyzeJournals();
             if (req) {
                 console.log(req);
@@ -37,7 +39,9 @@ export default function Journal() : NextPage {
             } else {
                 console.error('Error fetching journals:', req);
             }
+            setIsLoading(false);
         } catch (error) {
+            setIsLoading(false);
             console.error('Error fetching journals:', error);
         }
     }
@@ -55,7 +59,7 @@ export default function Journal() : NextPage {
             >
 
             </div>
-        {journals.map((journal) => {
+        {journals && journals.map((journal) => {
                 return (
                     <JournalEntry key={journal.id} content={journal.content} name={journal.name} padding={"4vh"}/>
                 )
@@ -83,13 +87,14 @@ export default function Journal() : NextPage {
                 width="16" 
                 height="16" 
                 fill="currentColor" 
-                class="bi bi-floppy" 
+                className="bi bi-floppy" 
                 viewBox="0 0 16 16"
             >
                 <path d="M11 2H9v3h2V2Z"/>
                 <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0ZM1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5Zm3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4v4.5ZM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5V15Z"/>
             </svg>
         </Button>
+        {isLoading && <Loading />}
         {events && summary &&
         <HStack
             bgColor={"#330F06"}
@@ -98,12 +103,12 @@ export default function Journal() : NextPage {
             borderWidth={"1px"}
         >
             <Box>
-            <Text>
+            <Text as={"p"} fontSize={"2rem"}>
                 {summary}
             </Text>
             </Box>
             <Box>
-                <Text>
+                <Text as={"p"} fontSize={"2rem"}>
                     {events}
                 </Text>
             </Box>

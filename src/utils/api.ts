@@ -65,3 +65,24 @@ export const analyzeJournals = async () => {
         console.error(err);
     }
 }
+
+export const updateJournal = async({name, content}) => {
+    try {
+        const req = await fetch("http://127.0.0.1:5000/journal_update", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({name, content})
+        });
+        const response = await req.json();
+        if (req.ok) {
+            console.log('Updated journal');
+            return response;
+        } else {
+            console.error('Failed to update journal', response.error);
+        }
+    } catch (err) {
+        console.error(err);
+    }
+}
