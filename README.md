@@ -2,6 +2,14 @@
 
 Project for CalHacks 10.0
 
+[![Let It Out](https://img.youtube.com/vi/d_M9d1bGJts/0.jpg)](https://www.youtube.com/watch?v=d_M9d1bGJts)
+
+## Tech Stack
+<img height="50" src=https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png> <img height="50" src=https://user-images.githubusercontent.com/25181517/183423507-c056a6f9-1ba8-4312-a350-19bcbc5a8697.png>
+<img height="50" src=https://github.com/marwin1991/profile-technology-icons/assets/136815194/5f8c622c-c217-4649-b0a9-7e0ee24bd704> <img height="50" src=https://user-images.githubusercontent.com/25181517/183423775-2276e25d-d43d-4e58-890b-edbc88e915f7.png>
+<img height="50" src=https://user-images.githubusercontent.com/25181517/190887639-d0ba4ec9-ddbe-45dd-bea1-4db83846503e.png> <img height="50" src=https://user-images.githubusercontent.com/25181517/182884177-d48a8579-2cd0-447a-b9a6-ffc7cb02560e.png>
+<img height="50" src=https://avatars.githubusercontent.com/u/80925478> <img height="50" src=https://play-lh.googleusercontent.com/8XCwpfWc9YkehwhrhoID6PGhs5SaSJoocS0oTBA8EsGFGLrj32oIYu5UKsIO7wdU1PQZ>
+
 ## Inspiration
 
 Understanding and expressing emotions can be a complex and challenging journey. Many people struggle to connect and identify with their feelings, which can be overwhelming and confusing. Let It Out was born from the desire to create a supportive space where users can explore and engage with their emotions, fostering self-awareness and personal growth. Whether Let It Out is used as a safe place to vent, to recount good memories, or to explore sources of anxiety, Let It Out is here to support users with any emotion they may be experiencing.
